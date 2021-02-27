@@ -12,7 +12,10 @@ setup(
     ]
     install_requires=[
         "boto3",
-        "awsiotsdk"
+        "awsiotsdk",
+        "python-statemachine",
+        "argparse",
+        "yaml"
     ],
     ,packages=['package_synchronizer']
 )
