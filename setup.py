@@ -13,11 +13,16 @@ setup(
     install_requires=[
         "boto3",
         "awsiotsdk",
-        "python-statemachine",
+        "transitions",
+        "transitions-gui",
         "argparse",
         "yaml",
         "os",
         "hashlib"
     ],
-    ,packages=['package_synchronizer']
+    ,packages=[
+        'package_synchronizer',
+        'iot_events',
+        'state_machine'
+    ]
 )
