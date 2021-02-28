@@ -15,7 +15,9 @@ setup(
         "awsiotsdk",
         "python-statemachine",
         "argparse",
-        "yaml"
+        "yaml",
+        "os",
+        "hashlib"
     ],
     ,packages=['package_synchronizer']
 )
