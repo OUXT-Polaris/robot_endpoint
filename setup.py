@@ -9,7 +9,7 @@ setup(
     license='MIT',
     classifiers=[
         "Development Status :: 1 - Planning"
-    ]
+    ],
     install_requires=[
         "boto3",
         "awsiotsdk",
@@ -20,7 +20,7 @@ setup(
         "os",
         "hashlib"
     ],
-    ,packages=[
+    packages=[
         'package_synchronizer',
         'iot_events',
         'state_machine'

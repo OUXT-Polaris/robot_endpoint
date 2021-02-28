@@ -2,6 +2,8 @@ from transitions_gui import WebMachine
 import time
 from transitions.extensions.states import Timeout, Tags, add_state_features
 
+from package_synchronizer.package_synchronizer import PackageSynchronizer
+
 @add_state_features(Timeout, Tags)
 class CustomMachine(WebMachine):
     pass
