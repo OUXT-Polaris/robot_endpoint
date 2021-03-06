@@ -13,16 +13,16 @@ setup(
     install_requires=[
         "boto3",
         "awsiotsdk",
-        "transitions",
-        "transitions-gui",
         "argparse",
         "yaml",
         "os",
-        "hashlib"
+        "hashlib",
+        "fastapi",
+        "uvicorn"
     ],
     packages=[
         'package_synchronizer',
         'iot_events',
-        'state_machine'
+        'robot_endpoint'
     ]
 )
