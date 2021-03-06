@@ -14,9 +14,7 @@ setup(
         "boto3",
         "awsiotsdk",
         "argparse",
-        "yaml",
-        "os",
-        "hashlib",
+        "pyyaml",
         "fastapi",
         "uvicorn",
         "logging"
