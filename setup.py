@@ -18,11 +18,12 @@ setup(
         "os",
         "hashlib",
         "fastapi",
-        "uvicorn"
+        "uvicorn",
+        "logging"
     ],
     packages=[
         'package_synchronizer',
-        'iot_events',
+        'logger',
         'robot_endpoint'
     ]
 )

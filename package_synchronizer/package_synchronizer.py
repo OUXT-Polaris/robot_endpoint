@@ -3,6 +3,7 @@ import argparse
 import yaml
 import os
 import hashlib
+import logging
 
 class PackageSynchronizer:
     def __init__(self, config_path):

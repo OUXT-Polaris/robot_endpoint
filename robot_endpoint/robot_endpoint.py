@@ -5,7 +5,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get('/')
+@app.post('/')
 async def synchronize_packages():
     sync = PackageSynchronizer("../example_config.yaml")
     sync.synchronize()
