@@ -16,12 +16,10 @@ setup(
         "argparse",
         "pyyaml",
         "fastapi",
-        "uvicorn",
-        "logging"
+        "uvicorn"
     ],
     packages=[
         'package_synchronizer',
-        'logger',
         'robot_endpoint'
     ]
 )
