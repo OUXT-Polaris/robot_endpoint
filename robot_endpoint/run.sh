@@ -1,1 +1,1 @@
-uvicorn app:app --reload
+uvicorn robot_endpoint:app --reload
