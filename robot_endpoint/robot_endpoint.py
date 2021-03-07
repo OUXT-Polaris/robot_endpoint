@@ -5,14 +5,14 @@ import time
 from fastapi import FastAPI
 import os
 import signal
-import subprocess
+from subprocess import Popen, PIPE
+
 class ProcessManager:
     def call(self, package_name, launch_filename):
-        self.p = subprocess.run('ros2 launch ' + package_name + ' ' + launch_filename, shell=True)
-        # print(dir(self.p))
+        self.p = Popen(['ros2', 'launch', package_name, launch_filename], shell=False)
     def terminate(self):
-        # self.p.send_signal(signal.SIGTERM)
-        os.killpg(os.getpgid(self.p.pid), signal.SIGKILL)
+        os.kill(self.p.pid, signal.SIGINT)
+        # self.p.kill()
 
 proc_manager = ProcessManager()
 app = FastAPI()
