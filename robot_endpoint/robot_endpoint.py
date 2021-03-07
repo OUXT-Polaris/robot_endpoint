@@ -26,7 +26,7 @@ class ProcessManager:
             name, value = argument.split(':=', maxsplit=1)
             parsed_launch_arguments[name] = value  # last one wins is intentional
         return parsed_launch_arguments.items()
-    def call(self, package_name, launch_filename):
+    async def call(self, package_name, launch_filename):
         launch_file_path = os.path.join(get_package_share_directory(package_name), 'launch', launch_filename)
         self.launch_service = launch.LaunchService()
             # argv=launch_file_arguments,
@@ -42,11 +42,9 @@ class ProcessManager:
             ),
         ])
         self.launch_service.include_launch_description(launch_description)
-        ret = self.launch_service.run()
-    def terminate(self):
-        pass
-        # os.kill(self.p.pid, signal.SIGINT)
-        # self.p.kill()
+        ret = await self.launch_service.run_async()
+    async def terminate(self):
+        await self.launch_service.shutdown()
 
 proc_manager = ProcessManager()
 app = FastAPI()
@@ -58,12 +56,12 @@ async def synchronize_packages(force_update: bool):
 
 @app.get('/get/launch')
 async def synchronize_packages(package_name: str, launch_filename: str):
-    proc_manager.call(package_name, launch_filename)
+    await proc_manager.call(package_name, launch_filename)
     return {}
     # sync = PackageSynchronizer("../example_config.yaml")
     # return {"result" : sync.synchronize(force_update)}
 
 @app.get('/get/terminate')
 async def synchronize_packages():
-    proc_manager.terminate()
+    await proc_manager.terminate()
     return {}
