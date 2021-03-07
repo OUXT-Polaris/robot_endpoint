@@ -58,8 +58,6 @@ async def synchronize_packages(force_update: bool):
 async def synchronize_packages(package_name: str, launch_filename: str):
     await proc_manager.call(package_name, launch_filename)
     return {}
-    # sync = PackageSynchronizer("../example_config.yaml")
-    # return {"result" : sync.synchronize(force_update)}
 
 @app.get('/get/terminate')
 async def synchronize_packages():
