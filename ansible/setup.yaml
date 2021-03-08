@@ -1,0 +1,11 @@
+- hosts: localhost
+  gather_facts: yes
+  connection: local
+  become: true
+  vars:
+    ros2_user:
+        name: "{{ lookup('env', 'USER') }}"
+        group: "{{ lookup('env', 'USER') }}"
+    ros2_configuration: desktop
+  roles:
+    - rarrais.ros2
