@@ -14,6 +14,8 @@ from typing import Text
 from typing import Tuple
 
 class ProcessManager:
+    def __init__(self):
+        self.running = False
     def parse_launch_arguments(launch_arguments: List[Text]) -> List[Tuple[Text, Text]]:
         """Parse the given launch arguments from the command line, into list of tuples for launch."""
         parsed_launch_arguments = OrderedDict()  # type: ignore
@@ -27,8 +29,10 @@ class ProcessManager:
             parsed_launch_arguments[name] = value  # last one wins is intentional
         return parsed_launch_arguments.items()
     async def call(self, package_name, launch_filename):
-        launch_file_path = os.path.join(get_package_share_directory(package_name), 'launch', launch_filename)
+        if self.running:
+            return
         self.launch_service = launch.LaunchService()
+        launch_file_path = os.path.join(get_package_share_directory(package_name), 'launch', launch_filename)
             # argv=launch_file_arguments,
             # noninteractive=False,
             #debug=False)
@@ -42,8 +46,10 @@ class ProcessManager:
             ),
         ])
         self.launch_service.include_launch_description(launch_description)
+        self.is_running = True
         ret = await self.launch_service.run_async()
     async def terminate(self):
+        self.running = False
         await self.launch_service.shutdown()
 
 proc_manager = ProcessManager()

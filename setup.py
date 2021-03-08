@@ -16,7 +16,8 @@ setup(
         "argparse",
         "pyyaml",
         "fastapi",
-        "uvicorn"
+        "uvicorn",
+        "ansible-runner"
     ],
     packages=[
         'package_synchronizer',
