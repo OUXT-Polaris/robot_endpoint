@@ -13,6 +13,8 @@ from typing import List
 from typing import Text
 from typing import Tuple
 
+import ansible_runner
+
 class ProcessManager:
     def __init__(self):
         self.running = False
@@ -68,4 +70,8 @@ async def synchronize_packages(package_name: str, launch_filename: str):
 @app.get('/get/terminate')
 async def synchronize_packages():
     await proc_manager.terminate()
+    return {}
+
+@app.get('/get/run_playbook')
+async def run_playbook(playbook_path: str):
     return {}
