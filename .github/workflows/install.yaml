@@ -3,7 +3,7 @@ name: install
 on:
   schedule:
   - cron: 0 0 * * *
-  pull_request:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
             - uses: actions/checkout@v2-beta
             - name: ansible
               run: |
-                  ansible-playbook -i ansible/hosts/localhost.ini ansible/install.yml --connection local --become
+                  ansible-playbook -i ansible/hosts/localhost.ini ansible/install.yaml --connection local --become
             - name: Slack Notification
               uses: 8398a7/action-slack@v2
               with:
