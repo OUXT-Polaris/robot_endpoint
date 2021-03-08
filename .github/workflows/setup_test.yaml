@@ -18,6 +18,8 @@ jobs:
               run: |
                    ansible-playbook --version
             - uses: actions/checkout@v2-beta
+            - name: install role via ansible-garaxy
+              run: ansible-galaxy install rarrais.ros2
             - name: ansible
               run: |
                   ansible-playbook -i ansible/hosts/localhost.ini ansible/setup.yaml --connection local --become
