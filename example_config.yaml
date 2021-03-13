@@ -1,4 +1,3 @@
-bucket_name : ouxt-deb-x86-foxy
 region : ap-southeast-2
 local_package_directory : /tmp/packages
 launch_cmd : ros2 launch navi_sim with_planner.launch.py
