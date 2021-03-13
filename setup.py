@@ -16,11 +16,9 @@ setup(
         "argparse",
         "pyyaml",
         "fastapi",
-        "uvicorn",
-        "ansible-runner"
+        "uvicorn"
     ],
     packages=[
-        'package_synchronizer',
         'robot_endpoint'
     ]
 )
